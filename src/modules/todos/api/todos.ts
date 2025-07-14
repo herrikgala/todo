@@ -1,6 +1,6 @@
 import type { Todo, TodoItem } from '../types'
 
-const API_URL = import.meta.env.VITE_APP_BASE_API
+const API_URL = 'https://jsonplaceholder.typicode.com/todos'
 
 export async function fetchTodos(): Promise<TodoItem[]> {
 	const res = await fetch(API_URL)

@@ -15,7 +15,7 @@ export default defineConfig(({ mode }) => {
 				'~': fileURLToPath(new URL('./src', import.meta.url))
 			}
 		},
-		base: env.VITE_BASE_URL,
+		base: '/todo',
 		css: {
 			preprocessorOptions: {
 				scss: {
@@ -29,7 +29,7 @@ export default defineConfig(({ mode }) => {
 		server: {
 			port: 3001,
 			host: true,
-			origin: env.VITE_BASE_URL
+			origin: '/todo'
 		},
 		json: {
 			stringify: true
