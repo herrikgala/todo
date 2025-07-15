@@ -1,13 +1,11 @@
 import { fileURLToPath, URL } from 'node:url'
-import { defineConfig, loadEnv } from 'vite'
+import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => {
-	const env = loadEnv(mode, process.cwd(), '')
-
-	const baseURL = env.VITE_APP_BASE_URL || '/'
+export default defineConfig(() => {
+	const baseURL = '/todo'
 
 	return {
 		plugins: [vue(), vueDevTools()],
@@ -26,7 +24,7 @@ export default defineConfig(({ mode }) => {
 			}
 		},
 		build: {
-			outDir: 'dist'
+			outDir: 'docs'
 		},
 		server: {
 			port: 3001,
