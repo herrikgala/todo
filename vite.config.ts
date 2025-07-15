@@ -7,6 +7,8 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 export default defineConfig(({ mode }) => {
 	const env = loadEnv(mode, process.cwd(), '')
 
+	const baseURL = env.VITE_APP_BASE_URL || '/'
+
 	return {
 		plugins: [vue(), vueDevTools()],
 		resolve: {
@@ -15,7 +17,7 @@ export default defineConfig(({ mode }) => {
 				'~': fileURLToPath(new URL('./src', import.meta.url))
 			}
 		},
-		base: '/todo',
+		base: baseURL,
 		css: {
 			preprocessorOptions: {
 				scss: {
@@ -24,12 +26,12 @@ export default defineConfig(({ mode }) => {
 			}
 		},
 		build: {
-			outDir: 'docs'
+			outDir: 'dist'
 		},
 		server: {
 			port: 3001,
 			host: true,
-			origin: '/todo'
+			origin: baseURL
 		},
 		json: {
 			stringify: true
